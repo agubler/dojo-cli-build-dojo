@@ -10,6 +10,7 @@ export default async function(helper: Helper, args: DojoBuildArgs) {
 	const installedCommands =
 		helper.command.exists('compile', 'ts') &&
 		helper.command.exists('install', 'typings') &&
+		helper.command.exists('lint', 'ts') &&
 		helper.command.exists('clean', 'file');
 
 	const cleanDirectory = args.type === 'dev' ? '_build' : 'dist';
@@ -21,6 +22,7 @@ export default async function(helper: Helper, args: DojoBuildArgs) {
 		console.info(chalk.underline('Cleaning \'typings\' directory\n'));
 		await helper.command.run('clean', 'file', <any> { files: 'typings' });
 		await helper.command.run('install', 'typings', <any> { directory: process.cwd() });
+		await helper.command.run('lint', 'ts');
 		await helper.command.run('compile', 'ts', args);
 		console.info(chalk.green.bold(`\n${args.type} build completed!`));
 	}

@@ -1,41 +1,47 @@
-# Dojo 2 core [![Build Status](https://travis-ci.org/dojo/dojo2.png)](https://travis-ci.org/dojo/dojo2)
+# dojo-cli-build-dojo
 
-TODO: Update travis-ci info for your package
+<!-- TODO: change and uncomment
+[![Build Status](https://travis-ci.org/dojo/<< package-name >>.svg?branch=master)](https://travis-ci.org/dojo/<< package-name >>)
+[![codecov](https://codecov.io/gh/dojo/<< package-name >>/branch/master/graph/badge.svg)](https://codecov.io/gh/dojo/<< package-name >>)
+[![npm version](https://badge.fury.io/js/dojo-<< package-name >>.svg)](http://badge.fury.io/js/dojo-<< package-name >>)
+-->
 
-The Dojo 2 core library provides TypeScript & JavaScript authors with a complete set of tools for developing
-well-structured, highly maintainable applications.
+Build pipeline for dojo2 packages
 
-TODO: Replace with a description of this package
+## Features
 
-## Who should use Dojo?
-
-Dojo 2 core is the best choice for teams that need a baseline set of robust, battle-tested tools for developing
-applications, frameworks, and utilities. Dojo is the oldest actively developed JavaScript library, so is particularly
-well suited for groups that are looking for something solid that will continue to exist and be maintained for years to
-come.
-
-TODO: Replace with a description of this package
+Some features
 
 ## How do I use this package?
 
-For Node.js users, `npm install dojo@beta` will install the latest version of Dojo 2 precompiled to CJS format.
+To run install `dojo-cli` and `dojo-cli-build-dojo` globally
 
-Other users will need to download and compile directly from the repository for the time being. Precompiled AMD modules
-will be provided in the near future as our release tools are improved.
+```shell
+npm install dojo-cli -g
+npm install dojo-cli-build-dojo -g
+```
 
-TODO: Add appropriate usage and instruction guidelines
+Run using `dojo` -
+
+```shell
+dojo build dojo -t ['dev'|'dist']
+```
 
 ## How do I contribute?
 
-1. [Open an issue](https://github.com/dojo/dojo2/issues) for the work you are going to do.
-2. Sign the [Dojo Foundation Contributor License Agreement](http://dojofoundation.org/about/claForm).
-   You only need to do this once to contribute to all Dojo Foundation projects.
-3. Submit a pull request!
+We appreciate your interest!  Please see the [Dojo 2 Meta Repository](https://github.com/dojo/meta#readme) for the
+Contributing Guidelines and Style Guide.
 
-TODO: Update with correct issue link for this package
-TODO: Add link to location on new website on how to get involved
+## Testing
+
+Test cases MUST be written using [Intern](https://theintern.github.io) using the Object test interface and Assert assertion interface.
+
+90% branch coverage MUST be provided for all code submitted to this repository, as reported by istanbul’s combined coverage results for all supported platforms.
+
+To test locally in node run:
+
+`grunt test`
 
 ## Licensing information
 
-© 2004–2015 Dojo Foundation & contributors. [New BSD](http://opensource.org/licenses/BSD-3-Clause) license.
-
+© 2004–2016 Dojo Foundation & contributors. [New BSD](http://opensource.org/licenses/BSD-3-Clause) license.

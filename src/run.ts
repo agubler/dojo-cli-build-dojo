@@ -1,21 +1,24 @@
 import { Argv } from 'yargs';
 import { Helper } from 'dojo-cli/interfaces';
 
-export default async function(helper: Helper, args: Argv) {
+export interface DojoBuildArgs extends Argv {
+	type: 'dev' | 'dist';
+}
+
+export default async function(helper: Helper, args: DojoBuildArgs) {
 	const installedCommands =
 		helper.command.exists('compile', 'ts') &&
 		helper.command.exists('install', 'typings') &&
 		helper.command.exists('clean', 'file');
 
+	const cleanDirectory = args.type === 'dev' ? '_build' : 'dist';
+
 	if (installedCommands) {
-		console.log('cleaning dist');
-		await helper.command.run('clean', 'file', <any> { files: '_build/' });
+
+		await helper.command.run('clean', 'file', <any> { files: cleanDirectory });
 		// TODO check conectivity before removing and installing typings
-		console.log('cleaning typings');
 		await helper.command.run('clean', 'file', <any> { files: 'typings/' });
-		console.log('Install Typings');
 		await helper.command.run('install', 'typings', <any> { directory: process.cwd() });
-		console.log('compiling source');
 		await helper.command.run('compile', 'ts', args);
 	}
 	else {
